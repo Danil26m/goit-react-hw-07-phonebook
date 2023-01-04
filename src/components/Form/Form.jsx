@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch} from 'react-redux';
-import { addContacts } from 'redux/contacts';
+import { addContacts, fetchTasks } from 'redux/options';
 import { nanoid } from 'nanoid';
-export default function Form() {
+export default function Form({items}) {
   const dispatch = useDispatch();
+    useEffect(()=>{ dispatch(fetchTasks()) },[dispatch]);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const handelInput = even => {
@@ -30,7 +31,15 @@ export default function Form() {
       <form id='form' action="" onSubmit={(even)=>{
         even.preventDefault();
         handelClick();
-        return dispatch(addContacts({name,number,id: nanoid()}))}}>
+        const bulElement = items.find(con => con.name === name);
+        if (bulElement) {
+          return alert(`${name} is already contact`);
+        } else {
+        dispatch(addContacts({name,number,id: nanoid()}))
+        }
+        
+        }}>
+      
         <h2>Name</h2>
         <input
           type="text"
