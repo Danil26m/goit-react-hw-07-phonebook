@@ -1,10 +1,3 @@
-// import axios from "axios";
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// axios.defaults.baseURL = "https://63b533df9f50390584c31bb0.mockapi.io/contacts";
-// export const fetchTasks = createAsyncThunk("tasks/fetchAll", async () => {
-//   const response = await axios.get("/tasks");
-//   return response.data;
-// });
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 axios.defaults.baseURL = "https://63b533df9f50390584c31bb0.mockapi.io";
