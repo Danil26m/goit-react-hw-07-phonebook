@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { addContacts, fetchTasks } from 'redux/options';
-import { nanoid } from 'nanoid';
 export default function Form({items}) {
   const dispatch = useDispatch();
     useEffect(()=>{ dispatch(fetchTasks()) },[dispatch]);
@@ -26,19 +25,19 @@ export default function Form({items}) {
     setName('');
     setNumber('');
 }
-  return (
-    <div>
-      <form id='form' action="" onSubmit={(even)=>{
-        even.preventDefault();
+const handelSubmit =(even)=>{
+  even.preventDefault();
         handelClick();
         const bulElement = items.find(con => con.name === name);
         if (bulElement) {
           return alert(`${name} is already contact`);
         } else {
-        dispatch(addContacts({name,number,id: nanoid()}))
+        dispatch(addContacts({name,number}))
         }
-        
-        }}>
+}
+  return (
+    <div>
+      <form id='form' action="" onSubmit={(even)=>handelSubmit(even)}>
       
         <h2>Name</h2>
         <input
