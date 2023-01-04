@@ -26,7 +26,7 @@ export default function Form({items}) {
     setNumber('');
 }
 const handelSubmit =(even)=>{
-  even.preventDefault();
+        even.preventDefault();
         handelClick();
         const bulElement = items.find(con => con.name === name);
         if (bulElement) {
@@ -37,7 +37,7 @@ const handelSubmit =(even)=>{
 }
   return (
     <div>
-      <form id='form' action="" onSubmit={(even)=>handelSubmit(even)}>
+      <form id='form' action="" onSubmit={handelSubmit}>
       
         <h2>Name</h2>
         <input
