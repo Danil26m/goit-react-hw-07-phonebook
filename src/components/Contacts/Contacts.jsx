@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
 import { deleteComponent} from 'redux/options';
 import { addTar} from 'redux/filter';
-import { fetchTasks, } from 'redux/options';
-
 export default function Contacts({cont}) {
     const dispatch = useDispatch();
-    useEffect(()=>{ dispatch(fetchTasks()) },[dispatch]);
   return (
     <div>
       <ul>
